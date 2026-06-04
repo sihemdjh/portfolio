@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siham Eldjouher — Data Analyst</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --black: #0f0f0f;
+            --white: #fafaf8;
+            --ink: #1a1a1a;
+            --muted: #6b6b6b;
+            --border: #e2e2de;
+            --accent: #2a52a0;
+            --accent-light: #edf1fb;
+            --green: #1E7A3E;
+            --green-light: #d6f0e0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--white);
+            color: var(--ink);
+            font-size: 15px;
+            line-height: 1.65;
+        }
+
+        /* NAV */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(250, 250, 248, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            height: 56px;
+        }
+
+        .nav-logo {
+            font-family: 'Instrument Serif', serif;
+            font-size: 18px;
+            color: var(--ink);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            font-size: 13px;
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--ink);
+        }
+
+        .nav-cta {
+            font-size: 12px;
+            font-weight: 500;
+            padding: 7px 16px;
+            background: var(--ink);
+            color: var(--white) !important;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .nav-cta:hover {
+            background: var(--accent) !important;
+            color: var(--white) !important;
+        }
+
+        /* WRAPPER */
+        .wrap {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 48px;
+        }
+
+        /* BUTTONS */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--ink);
+            color: var(--white);
+            border: 1px solid var(--ink);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--white);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--ink);
+            border: 1px solid var(--border);
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--ink);
+            color: var(--ink);
+        }
+
+        /* HERO */
+        #hero {
+            padding: 100px 0 80px;
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 64px;
+            align-items: center;
+        }
+
+        .hero-label {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hero-label::before {
+            content: '';
+            display: inline-block;
+            width: 24px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        h1 {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(38px, 5vw, 54px);
+            font-weight: 400;
+            line-height: 1.1;
+            color: var(--ink);
+            margin-bottom: 20px;
+        }
+
+        h1 em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .hero-story {
+            font-size: 15px;
+            color: var(--muted);
+            line-height: 1.75;
+            margin-bottom: 28px;
+        }
+
+        .hero-story strong {
+            color: var(--ink);
+            font-weight: 500;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        /* Hero card */
+        .hero-card {
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            background: var(--white);
+        }
+
+        .hero-card-top {
+            background: linear-gradient(135deg, #e8eff9 0%, #f0ebfb 100%);
+            padding: 28px 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* PHOTO SLOT */
+        .avatar-slot {
+            width: 88px;
+            height: 88px;
+            border-radius: 50%;
+            background: #dde7f5;
+            border: 3px solid var(--white);
+            box-shadow: 0 2px 12px rgba(42, 82, 160, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .avatar-slot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+        }
+
+        .avatar-slot svg {
+            width: 36px;
+            height: 36px;
+            opacity: 0.45;
+        }
+
+        /* To add your photo: replace the <svg> inside .avatar-slot with:
+     <img src="your-photo.jpg" alt="Siham Eldjouher"> */
+
+        .hero-card-name {
+            font-family: 'Instrument Serif', serif;
+            font-size: 17px;
+            color: var(--ink);
+        }
+
+        .hero-card-role {
+            font-size: 11px;
+            color: var(--accent);
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .avail-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--green);
+            background: var(--green-light);
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+
+        .avail-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--green);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: 0.4
+            }
+        }
+
+        .hero-card-body {
+            padding: 18px 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .hc-stat {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .hc-label {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .hc-val {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--ink);
+        }
+
+        .hc-divider {
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-label {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-label::before {
+            content: '';
+            display: inline-block;
+            width: 18px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        h2 {
+            font-family: 'Instrument Serif', serif;
+            font-size: 34px;
+            font-weight: 400;
+            color: var(--ink);
+            margin-bottom: 40px;
+        }
+
+        /* ABOUT */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .about-text p {
+            font-size: 14px;
+            color: var(--muted);
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .about-text p strong {
+            color: var(--ink);
+            font-weight: 500;
+        }
+
+        .about-facts {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .fact-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 13px 20px;
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            font-size: 13px;
+        }
+
+        .fact-row:last-child {
+            border-bottom: none;
+        }
+
+        .fact-label {
+            color: var(--muted);
+        }
+
+        .fact-val {
+            font-weight: 500;
+            color: var(--ink);
+            text-align: right;
+        }
+
+        .badge-permis {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: #fff8e1;
+            color: #a16207;
+            font-size: 11px;
+            font-weight: 500;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        /* SKILLS */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .skill-cell {
+            padding: 24px;
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: var(--white);
+            transition: background 0.2s;
+        }
+
+        .skill-cell:hover {
+            background: var(--accent-light);
+        }
+
+        .skill-cell:nth-child(3n) {
+            border-right: none;
+        }
+
+        .skill-cell:nth-last-child(-n+3) {
+            border-bottom: none;
+        }
+
+        .skill-icon {
+            font-size: 16px;
+            margin-bottom: 10px;
+            width: 32px;
+            height: 32px;
+            border-radius: 7px;
+            background: var(--accent-light);
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .skill-name {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--ink);
+            margin-bottom: 5px;
+        }
+
+        .skill-items {
+            font-size: 12px;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        /* LEARNING BOX */
+        .learning-box {
+            margin-top: 20px;
+            padding: 16px 20px;
+            border: 1px dashed var(--accent);
+            border-radius: 10px;
+            background: var(--accent-light);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .learning-box-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 3px;
+        }
+
+        .learning-box-text {
+            font-size: 13px;
+            color: var(--ink);
+        }
+
+        /* PROJECTS */
+        .projects-list {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .project-card {
+            padding: 30px 34px;
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            transition: background 0.2s;
+        }
+
+        .project-card:last-child {
+            border-bottom: none;
+        }
+
+        .project-card:hover {
+            background: #f7f7f5;
+        }
+
+        .project-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 24px;
+            margin-bottom: 10px;
+        }
+
+        .project-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .project-num {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .project-title {
+            font-family: 'Instrument Serif', serif;
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--ink);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 7px;
+            flex-shrink: 0;
+        }
+
+        .proj-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 12px;
+            font-weight: 500;
+            padding: 5px 11px;
+            border-radius: 5px;
+            text-decoration: none;
+            border: 1px solid var(--border);
+            color: var(--ink);
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .proj-link:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .proj-link svg {
+            width: 11px;
+            height: 11px;
+        }
+
+        .project-desc {
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.65;
+            margin-bottom: 12px;
+        }
+
+        .project-highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-bottom: 12px;
+        }
+
+        .highlight-item {
+            font-size: 12px;
+            color: var(--muted);
+            display: flex;
+            gap: 8px;
+        }
+
+        .highlight-item::before {
+            content: '→';
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .tag {
+            font-size: 11px;
+            font-weight: 500;
+            padding: 3px 9px;
+            border-radius: 4px;
+        }
+
+        .t-sql {
+            background: #e6f3f0;
+            color: #1a5c4d;
+        }
+
+        .t-py {
+            background: #fef3e2;
+            color: #7c4a00;
+        }
+
+        .t-bi {
+            background: #f0ebfb;
+            color: #4c2a85;
+        }
+
+        .t-ns {
+            background: #fde8f0;
+            color: #7a1a3a;
+        }
+
+        .t-ot {
+            background: #f1efea;
+            color: #3a3a3a;
+        }
+
+        /* TIMELINE */
+        .timeline {
+            position: relative;
+            padding-left: 28px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 6px;
+            bottom: 6px;
+            width: 1px;
+            background: var(--border);
+        }
+
+        .tl-item {
+            position: relative;
+            margin-bottom: 28px;
+        }
+
+        .tl-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .tl-dot {
+            position: absolute;
+            left: -25px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 2px solid var(--accent);
+        }
+
+        .tl-dot.filled {
+            background: var(--accent);
+        }
+
+        .tl-date {
+            font-size: 11px;
+            color: var(--muted);
+            margin-bottom: 3px;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+        }
+
+        .tl-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--ink);
+            margin-bottom: 2px;
+        }
+
+        .tl-sub {
+            font-size: 13px;
+            color: var(--accent);
+        }
+
+        /* EDUCATION */
+        .edu-main {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-bottom: 36px;
+        }
+
+        .edu-card {
+            padding: 26px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: var(--white);
+            transition: border-color 0.2s;
+        }
+
+        .edu-card:hover {
+            border-color: var(--accent);
+        }
+
+        .edu-date {
+            font-size: 11px;
+            color: var(--muted);
+            margin-bottom: 7px;
+            font-weight: 500;
+        }
+
+        .edu-degree {
+            font-family: 'Instrument Serif', serif;
+            font-size: 17px;
+            color: var(--ink);
+            margin-bottom: 4px;
+        }
+
+        .edu-school {
+            font-size: 13px;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .edu-modules {
+            font-size: 12px;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        /* SCORES */
+        .scores-note {
+            font-size: 12px;
+            color: var(--muted);
+            margin-bottom: 14px;
+            font-style: italic;
+        }
+
+        .scores-table {
+            width: 100%;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            border-collapse: collapse;
+        }
+
+        .scores-table th {
+            background: #f5f5f2;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--muted);
+            padding: 11px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .scores-table td {
+            padding: 12px 20px;
+            font-size: 13px;
+            color: var(--ink);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .scores-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .scores-table tr:hover td {
+            background: #f9f9f7;
+        }
+
+        .score-bar-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .score-bar-bg {
+            flex: 1;
+            height: 4px;
+            background: var(--border);
+            border-radius: 2px;
+        }
+
+        .score-bar-fill {
+            height: 4px;
+            border-radius: 2px;
+            background: var(--accent);
+        }
+
+        .score-bar-fill.perfect {
+            background: var(--green);
+        }
+
+        .score-val-txt {
+            font-weight: 500;
+            min-width: 48px;
+            text-align: right;
+            font-size: 13px;
+        }
+
+        .score-val-txt.perfect {
+            color: var(--green);
+        }
+
+        /* EXPERIENCE */
+        .exp-item {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            gap: 32px;
+            padding: 30px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .exp-item:first-child {
+            padding-top: 0;
+        }
+
+        .exp-item:last-child {
+            border-bottom: none;
+        }
+
+        .exp-date {
+            font-size: 12px;
+            color: var(--muted);
+            padding-top: 3px;
+            line-height: 1.6;
+        }
+
+        .exp-title {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--ink);
+            margin-bottom: 3px;
+        }
+
+        .exp-company {
+            font-size: 13px;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .exp-bullets {
+            padding-left: 16px;
+        }
+
+        .exp-bullets li {
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.65;
+            margin-bottom: 4px;
+        }
+
+        .exp-bullets li::marker {
+            color: var(--accent);
+        }
+
+        /* LANGUAGES */
+        .lang-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .lang-card {
+            padding: 20px 16px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            text-align: center;
+            transition: border-color 0.2s;
+        }
+
+        .lang-card:hover {
+            border-color: var(--accent);
+        }
+
+        .lang-name {
+            font-family: 'Instrument Serif', serif;
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+
+        .lang-level {
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .lang-score {
+            font-size: 11px;
+            color: var(--muted);
+            margin-top: 3px;
+        }
+
+        .certif-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 28px;
+        }
+
+        .certif-card {
+            padding: 16px 20px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            min-width: 190px;
+        }
+
+        .certif-status {
+            font-size: 11px;
+            color: var(--accent);
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .certif-name {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--ink);
+        }
+
+        .certif-sub {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        /* CONTACT */
+        .contact-wrap {
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .contact-wrap h2 {
+            margin-bottom: 12px;
+        }
+
+        .contact-desc {
+            color: var(--muted);
+            font-size: 15px;
+            max-width: 420px;
+            margin: 0 auto 32px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 13px;
+            color: var(--ink);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .contact-link:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .contact-link-dl {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            background: var(--ink);
+            color: var(--white);
+            text-decoration: none;
+            border: 1px solid var(--ink);
+            transition: all 0.2s;
+        }
+
+        .contact-link-dl:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--white);
+        }
+
+        .bg-alt {
+            background: #f7f7f5;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 22px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .fade-in {
+            animation: fadeUp 0.6s ease both;
+        }
+
+        .fade-in-1 {
+            animation-delay: 0.05s;
+        }
+
+        .fade-in-2 {
+            animation-delay: 0.15s;
+        }
+
+        .fade-in-3 {
+            animation-delay: 0.25s;
+        }
+
+        .fade-in-4 {
+            animation-delay: 0.4s;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .wrap {
+                padding: 0 20px;
+            }
+
+            #hero {
+                grid-template-columns: 1fr;
+                padding: 60px 0;
+                gap: 32px;
+            }
+
+            .about-grid,
+            .edu-main {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .lang-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .exp-item {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a href="#" class="nav-logo">SE.</a>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#education">Education</a>
+            <a href="#experience">Experience</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <a href="cv_siham_final.pdf" class="nav-cta">Download CV</a>
+    </nav>
+
+    <!-- HERO -->
+    <div class="wrap">
+        <section id="hero">
+            <div>
+                <div class="hero-label fade-in fade-in-1">Data Analyst · Open to alternance · Sept 2026</div>
+                <h1 class="fade-in fade-in-2">Siham<br><em>Eldjouher</em></h1>
+                <p class="hero-story fade-in fade-in-3">
+                    I moved from Algeria to France to study data — and I haven't stopped since.<br><br>
+                    Currently enrolled in an <strong>Applied MSc in Data Analytics at DSTI</strong>, I build end-to-end
+                    pipelines, train ML models, and turn messy datasets into decisions people can act on.
+                </p>
+                <div class="hero-cta fade-in fade-in-4">
+                    <a href="#projects" class="btn btn-primary">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                        View my work
+                    </a>
+                    <a href="YOUR_CV_LINK_HERE" class="btn btn-ghost">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
+                        </svg>
+                        Download CV
+                    </a>
+                </div>
+            </div>
+
+            <!-- HERO CARD -->
+            <div class="hero-card fade-in fade-in-3">
+                <div class="hero-card-top">
+
+                    <div class="avatar-slot">
+                        <img src="Untitled design1.PNG" alt="Siham Eldjouher">
+
+                    </div>
+
+                    <div class="hero-card-name">Siham Eldjouher</div>
+                    <div class="hero-card-role">Data Analyst</div>
+                    <div class="avail-badge">
+                        <div class="avail-dot"></div> Available Sept 2026
+                    </div>
+                </div>
+                <div class="hero-card-body">
+                    <div class="hc-stat">
+                        <span class="hc-label">Program</span>
+                        <span class="hc-val">Applied MSc · DSTI</span>
+                    </div>
+                    <div class="hc-divider"></div>
+                    <div class="hc-stat">
+                        <span class="hc-label">Top scores</span>
+                        <span class="hc-val" style="color:var(--green)">100/100 × 3 courses</span>
+                    </div>
+                    <div class="hc-divider"></div>
+                    <div class="hc-stat">
+                        <span class="hc-label">Location</span>
+                        <span class="hc-val">Saint-Quentin, France</span>
+                    </div>
+                    <div class="hc-divider"></div>
+                    <div class="hc-stat">
+                        <span class="hc-label">Languages</span>
+                        <span class="hc-val">Arabic · FR · EN · ES</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ABOUT -->
+    <div class="bg-alt">
+        <div class="wrap">
+            <section id="about">
+                <div class="section-label">Who I am</div>
+                <h2>About me</h2>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>I grew up in Algeria, where I studied Computer Science and Information Systems. In 2024, I
+                            moved to France to pursue a <strong>Master in Business Administration at Le Mans
+                                Université</strong>, then pivoted fully into data with an <strong>Applied MSc in Data
+                                Analytics at DSTI</strong>.</p>
+                        <p>I'm drawn to the full data stack — from writing complex SQL queries and cleaning messy
+                            datasets, to training classification models and building Power BI dashboards that
+                            non-technical stakeholders actually use.</p>
+                        <p>Outside of data, I speak four languages, which helps me collaborate across teams and adapt
+                            quickly in international environments.</p>
+                        <a href="#contact" class="btn btn-ghost" style="margin-top:8px">Get in touch →</a>
+                    </div>
+                    <div class="about-facts">
+                        <div class="fact-row"><span class="fact-label">Currently studying</span><span
+                                class="fact-val">Applied MSc · DSTI</span></div>
+                        <div class="fact-row"><span class="fact-label">Looking for</span><span class="fact-val">12-month
+                                alternance</span></div>
+                        <div class="fact-row"><span class="fact-label">Start date</span><span class="fact-val">September
+                                2026</span></div>
+                        <div class="fact-row"><span class="fact-label">Based in</span><span
+                                class="fact-val">Saint-Quentin, France</span></div>
+                        <div class="fact-row"><span class="fact-label">Mobility</span><span class="fact-val">France &
+                                Europe</span></div>
+                        <div class="fact-row">
+                            <span class="fact-label">Driving licence</span>
+                            <span class="fact-val"><span class="badge-permis">🚗 Permis B</span></span>
+                        </div>
+                        <div class="fact-row"><span class="fact-label">Currently learning</span><span class="fact-val"
+                                style="font-size:12px; color:var(--accent)">Power BI PL-300 · Neo4j</span></div>
+                        <div class="fact-row"><span class="fact-label">Email</span><span class="fact-val"
+                                style="font-size:11px">siham.eldjouher@edu.dsti.institute</span></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- SKILLS -->
+    <div class="wrap">
+        <section id="skills">
+            <div class="section-label">What I work with</div>
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-cell">
+                    <div class="skill-icon">◈</div>
+                    <div class="skill-name">SQL & Data Wrangling</div>
+                    <div class="skill-items">MySQL · CTEs · Window Functions · EDA · Data Cleaning</div>
+                </div>
+                <div class="skill-cell">
+                    <div class="skill-icon">◈</div>
+                    <div class="skill-name">Python & Machine Learning</div>
+                    <div class="skill-items">Pandas · NumPy · Scikit-learn · Matplotlib · Classification</div>
+                </div>
+                <div class="skill-cell">
+                    <div class="skill-icon">◈</div>
+                    <div class="skill-name">Data Visualisation</div>
+                    <div class="skill-items">Power BI · DAX · Excel · Interactive Dashboards · KPIs</div>
+                </div>
+                <div class="skill-cell">
+                    <div class="skill-icon">◈</div>
+                    <div class="skill-name">NoSQL</div>
+                    <div class="skill-items">MongoDB · Neo4j · Graph Databases</div>
+                </div>
+                <div class="skill-cell">
+                    <div class="skill-icon">◈</div>
+                    <div class="skill-name">Data Pipeline & Formats</div>
+                    <div class="skill-items">XML · XSD · XSLT · Data transformation · Pipeline architecture</div>
+                </div>
+                <div class="skill-cell">
+                    <div class="skill-icon">◈</div>
+                    <div class="skill-name">Methods & Tools</div>
+                    <div class="skill-items">Agile · SCRUM · UML · CRM · MS Project · R · Git</div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+    <!-- PROJECTS -->
+    <div class="bg-alt">
+        <div class="wrap">
+            <section id="projects">
+                <div class="section-label">What I've built</div>
+                <h2>Projects</h2>
+                <div class="projects-list">
+
+                    <div class="project-card">
+                        <div class="project-top">
+                            <div class="project-meta">
+                                <div class="project-num">01 · Nov 2025 – Feb 2026</div>
+                                <div class="project-title">Cybersecurity Attack Type Detection</div>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/sihemdjh/cybersecurity_attacks.git" target="_blank"
+                                    class="proj-link">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                        <path
+                                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                                    </svg>
+                                    GitHub
+                                </a>
+                            </div>
+                        </div>
+                        <p class="project-desc">End-to-end ML pipeline to classify network cyber-attacks from raw
+                            traffic data. From raw data to a deployed web application where users input network
+                            parameters and get a real-time attack type prediction.</p>
+                        <div class="project-highlights">
+                            <div class="highlight-item">Full pipeline: data cleaning → EDA → feature engineering → model
+                                training → web deployment</div>
+                            <div class="highlight-item">Models evaluated: Random Forest, SVM — measured with accuracy,
+                                recall, F1-score</div>
+                            <div class="highlight-item">Deployed as a Flask web app with real-time prediction interface
+                            </div>
+                        </div>
+                        <div class="tag-row">
+                            <span class="tag t-py">Python</span><span class="tag t-py">Scikit-learn</span>
+                            <span class="tag t-py">Flask</span><span class="tag t-ot">EDA</span>
+                            <span class="tag t-ot">Random Forest</span><span class="tag t-ot">SVM</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-top">
+                            <div class="project-meta">
+                                <div class="project-num">02 · January 2025</div>
+                                <div class="project-title">Data Cleaning & EDA — MySQL</div>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/sihemdjh/Data-Cleaning-and-Exploratory-Data-Analysis-in-MySQL.git"
+                                    target="_blank" class="proj-link">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                        <path
+                                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                                    </svg>
+                                    GitHub
+                                </a>
+                            </div>
+                        </div>
+                        <p class="project-desc">Advanced data cleaning and exploratory analysis on a real-world business
+                            dataset. Taking a raw, inconsistent dataset and turning it into a clean, query-ready source
+                            for business insight — score: 100/100.</p>
+                        <div class="project-highlights">
+                            <div class="highlight-item">Deduplication, standardisation, missing value handling and
+                                format transformation</div>
+                            <div class="highlight-item">Monthly and annual trend analysis, company/country rankings,
+                                cumulative metrics</div>
+                            <div class="highlight-item">Advanced SQL: CTEs, window functions, analytical queries</div>
+                        </div>
+                        <div class="tag-row">
+                            <span class="tag t-sql">SQL</span><span class="tag t-sql">MySQL</span>
+                            <span class="tag t-sql">CTEs</span><span class="tag t-sql">Window Functions</span><span
+                                class="tag t-ot">EDA</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-top">
+                            <div class="project-meta">
+                                <div class="project-num">03 · February 2025</div>
+                                <div class="project-title">Power BI Dashboard — PwC Simulation</div>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/sihemdjh" target="_blank" class="proj-link">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                        <path
+                                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                                    </svg>
+                                    GitHub
+                                </a>
+                            </div>
+                        </div>
+                        <p class="project-desc">Interactive Power BI dashboards for a PwC professional simulation on
+                            call centre performance. Built for management use — clear KPIs, clean visual hierarchy, DAX
+                            measures that non-technical stakeholders can interpret at a glance.</p>
+                        <div class="project-highlights">
+                            <div class="highlight-item">KPIs tracked: client retention rate, agent productivity, call
+                                volumes by hour and week</div>
+                            <div class="highlight-item">DAX measures for dynamic filtering and drill-through analysis
+                            </div>
+                            <div class="highlight-item">Designed for management decision-making — clarity over technical
+                                complexity</div>
+                        </div>
+                        <div class="tag-row">
+                            <span class="tag t-bi">Power BI</span><span class="tag t-bi">DAX</span>
+                            <span class="tag t-ot">KPIs</span><span class="tag t-ot">Reporting</span>
+                        </div>
+                    </div>
+                </div>
+                <p style="font-size:12px;color:var(--muted);margin-top:14px;text-align:center">Update each GitHub link
+                    above with your actual repository URL once projects are pushed.</p>
+            </section>
+        </div>
+    </div>
+
+    <!-- EDUCATION + JOURNEY -->
+    <div class="wrap">
+        <section id="education">
+            <div class="section-label">Academic background</div>
+            <h2>Education</h2>
+
+            <div style="display:grid;grid-template-columns:1fr 220px;gap:48px;margin-bottom:40px;align-items:start">
+                <div>
+                    <div class="edu-main">
+                        <div class="edu-card">
+                            <div class="edu-date">Oct 2025 – Sept 2027</div>
+                            <div class="edu-degree">Applied MSc in Data Analytics</div>
+                            <div class="edu-school">Data ScienceTech Institute (DSTI)</div>
+                            <div class="edu-modules">Machine Learning (Python & R) · SQL · Advanced Excel · CRM · Data
+                                Pipeline · XML/XSD/XSLT · MongoDB · Neo4j</div>
+                        </div>
+                        <div class="edu-card">
+                            <div class="edu-date">Sept 2024 – Sept 2025</div>
+                            <div class="edu-degree">MSc Management & Business Administration</div>
+                            <div class="edu-school">Le Mans Université, France</div>
+                            <div style="margin-top:16px">
+                                <div class="edu-date">Jan – Jul 2024</div>
+                                <div class="edu-degree" style="font-size:15px;margin-top:3px">CS & Information Systems
+                                </div>
+                                <div class="edu-school">Algerian Chamber of Commerce · Algiers</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- JOURNEY TIMELINE -->
+                <div>
+                    <div class="section-label" style="margin-bottom:20px">My journey</div>
+                    <div class="timeline">
+                        <div class="tl-item">
+                            <div class="tl-dot filled"></div>
+                            <div class="tl-date">2026 →</div>
+                            <div class="tl-title">Alternance search</div>
+                            <div class="tl-sub">Data Analytics / BI</div>
+                        </div>
+                        <div class="tl-item">
+                            <div class="tl-dot filled"></div>
+                            <div class="tl-date">Oct 2025</div>
+                            <div class="tl-title">MSc Data Analytics</div>
+                            <div class="tl-sub">DSTI, France</div>
+                        </div>
+                        <div class="tl-item">
+                            <div class="tl-dot filled"></div>
+                            <div class="tl-date">Sept 2024</div>
+                            <div class="tl-title">Management and Business Administration</div>
+                            <div class="tl-sub">Le Mans Université</div>
+                        </div>
+                        <div class="tl-item">
+                            <div class="tl-dot"></div>
+                            <div class="tl-date">Jan 2024</div>
+                            <div class="tl-title">IT training</div>
+                            <div class="tl-sub">CACI, Algeria</div>
+                        </div>
+                        <div class="tl-item">
+                            <div class="tl-dot"></div>
+                            <div class="tl-date">Sept 2021</div>
+                            <div class="tl-title">Chemical Engeneering</div>
+                            <div class="tl-sub">Blida 1 University, Algeria</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-label" style="margin-bottom:10px">Selected academic scores — highlights only</div>
+            <p class="scores-note">Showing courses with score ≥ 80/100.</p>
+            <table class="scores-table">
+                <thead>
+                    <tr>
+                        <th>Course</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Data Wrangling with SQL</td>
+                        <td>
+                            <div class="score-bar-wrap">
+                                <div class="score-bar-bg">
+                                    <div class="score-bar-fill perfect" style="width:100%"></div>
+                                </div><span class="score-val-txt perfect">100 / 100</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Machine Learning with Python Labs</td>
+                        <td>
+                            <div class="score-bar-wrap">
+                                <div class="score-bar-bg">
+                                    <div class="score-bar-fill perfect" style="width:100%"></div>
+                                </div><span class="score-val-txt perfect">100 / 100</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Foundations of Statistical Analysis & ML</td>
+                        <td>
+                            <div class="score-bar-wrap">
+                                <div class="score-bar-bg">
+                                    <div class="score-bar-fill perfect" style="width:100%"></div>
+                                </div><span class="score-val-txt perfect">100 / 100</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>NoSQL — MongoDB</td>
+                        <td>
+                            <div class="score-bar-wrap">
+                                <div class="score-bar-bg">
+                                    <div class="score-bar-fill" style="width:95%"></div>
+                                </div><span class="score-val-txt">95 / 100</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>IT Project Management (Agile & Traditional)</td>
+                        <td>
+                            <div class="score-bar-wrap">
+                                <div class="score-bar-bg">
+                                    <div class="score-bar-fill" style="width:90%"></div>
+                                </div><span class="score-val-txt">90 / 100</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Software Engineering Part 2</td>
+                        <td>
+                            <div class="score-bar-wrap">
+                                <div class="score-bar-bg">
+                                    <div class="score-bar-fill" style="width:85%"></div>
+                                </div><span class="score-val-txt">85 / 100</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Software Engineering Part 1</td>
+                        <td>
+                            <div class="score-bar-wrap">
+                                <div class="score-bar-bg">
+                                    <div class="score-bar-fill" style="width:80%"></div>
+                                </div><span class="score-val-txt">80 / 100</span>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div class="bg-alt">
+        <div class="wrap">
+            <section id="experience">
+                <div class="section-label">Professional background</div>
+                <h2>Experience</h2>
+                <div class="exp-item">
+                    <div class="exp-date">Jun – Sept 2025<br>Algiers, Algeria</div>
+                    <div>
+                        <div class="exp-title">Multi-project Management Intern</div>
+                        <div class="exp-company">Groupe SONAREM — Mining sector</div>
+                        <ul class="exp-bullets">
+                            <li>Audited existing multi-project management practices across 3+ active projects in the
+                                mining sector</li>
+                            <li>Designed a structured portfolio tracking model with KPIs, presented to senior management
+                            </li>
+                            <li>Modelled project timelines and resource allocation in Microsoft Project using Agile and
+                                traditional methods</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- LANGUAGES -->
+    <div class="wrap">
+        <section id="languages">
+            <div class="section-label">Communication</div>
+            <h2>Languages & Certifications</h2>
+            <div class="lang-grid">
+                <div class="lang-card">
+                    <div class="lang-name">Arabic</div>
+                    <div class="lang-level">Native</div>
+                </div>
+                <div class="lang-card">
+                    <div class="lang-name">French</div>
+                    <div class="lang-level">C1 · Advanced</div>
+                    <div class="lang-score">TCF 516 / 699</div>
+                </div>
+                <div class="lang-card">
+                    <div class="lang-name">English</div>
+                    <div class="lang-level">B2 · Upper-Int.</div>
+                    <div class="lang-score">IELTS 6 / 9</div>
+                </div>
+                <div class="lang-card">
+                    <div class="lang-name">Spanish</div>
+                    <div class="lang-level">B1 · Intermediate</div>
+                </div>
+            </div>
+            <div class="certif-row">
+                <div class="certif-card">
+                    <div class="certif-status">In progress</div>
+                    <div class="certif-name">Microsoft Power BI</div>
+                    <div class="certif-sub">PL-300 Certification</div>
+                </div>
+                <div class="certif-card">
+                    <div class="certif-status">In progress</div>
+                    <div class="certif-name">Neo4j</div>
+                    <div class="certif-sub">Certified Professional</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="bg-alt">
+        <div class="wrap">
+            <div class="contact-wrap" id="contact">
+                <div class="section-label" style="justify-content:center">Let's connect</div>
+                <h2>Open to opportunities</h2>
+                <p class="contact-desc">Looking for a 12-month alternance in Data Analytics or Business Intelligence
+                    starting September 2026. Based in France, open to the whole of Europe.</p>
+                <div class="contact-links">
+                    <a href="https://mail.google.com/mail/?view=cm&to=siham.eldjouher@edu.dsti.institute"
+                        target="_blank" class="contact-link">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.8">
+                            <rect x="2" y="4" width="20" height="16" rx="2" />
+                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                        </svg>
+                        Email me
+                    </a>
+                    <a href="https://www.linkedin.com/in/sihameldjouher" target="_blank" class="contact-link">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.8">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                            <rect x="2" y="9" width="4" height="12" />
+                            <circle cx="4" cy="4" r="2" />
+                        </svg>
+                        LinkedIn
+                    </a>
+                    <a href="https://github.com/sihemdjh" target="_blank" class="contact-link">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.8">
+                            <path
+                                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                        </svg>
+                        GitHub
+                    </a>
+                    <a href="cv_siham_final.pdf" class="contact-link-dl">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.8">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
+                        </svg>
+                        Download CV
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <span>Siham Eldjouher — Data Analyst</span>
+        <span>Open to alternance · September 2026</span>
+    </footer>
+
+</body>
+
+</html>
